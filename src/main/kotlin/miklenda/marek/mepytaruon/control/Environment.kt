@@ -10,7 +10,7 @@ class Environment(
     internal var ipDirection: IPDirection = IPDirection.RIGHT,
     numberOfCells: Int = 30000,
     internal var trace: Boolean = false,
-    internal val stdin: () -> String = { readLine() ?: throw MepytaruonException(ipX, ipY, "Invalid input!") },
+    internal val stdin: () -> Int = { readLine()?.toIntOrNull() ?: throw MepytaruonException(ipX, ipY, "Invalid input!") },
     internal val stdout: (String) -> Unit = { print(it) }
 ) {
     init {

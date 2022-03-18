@@ -1,6 +1,5 @@
 package miklenda.marek.mepytaruon.data
 
-import miklenda.marek.mepytaruon.MepytaruonException
 import miklenda.marek.mepytaruon.control.Environment
 
 internal enum class TileType(source: Int, val numArgs: Byte, val action: (Environment, Int) -> Unit) {
@@ -39,11 +38,7 @@ internal enum class TileType(source: Int, val numArgs: Byte, val action: (Enviro
             1 -> e.memoryCells[e.memoryPointer] = 0
             2 -> e.memoryCells[e.memoryPointer]++
             3 -> e.memoryCells[e.memoryPointer]--
-            4 -> e.memoryCells[e.memoryPointer] = try {
-                readLine()?.toInt() ?: throw MepytaruonException(e.ipX, e.ipY, "Invalid input!")
-            } catch (ex: java.lang.NumberFormatException) {
-                throw MepytaruonException(e.ipX, e.ipY, "Invalid input!")
-            }
+            4 -> e.memoryCells[e.memoryPointer] = e.stdin()
         }
     }),
     BLUE(0x4040FF, 9, { e, a ->         // case next to yellow: acts like yellow; case orange: act like yellow, and apply rotation (yellow) break; else act like pink (NOP)

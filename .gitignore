@@ -3,3 +3,6 @@
 /build/
 /build/classes/java/main/
 /out/
+
+/src/main/kotlin/META-INF/
+/.idea/

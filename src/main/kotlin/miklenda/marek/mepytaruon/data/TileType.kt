@@ -18,12 +18,12 @@ internal enum class TileType(source: Int, val numArgs: Byte, val action: (Enviro
         setDirectionFromArg(a, e)
     }),
     ORANGE(0xFFC14A, 4, { e, a ->       // Changes flavor to orange if value at pointer is 0, outputs value at pointer (no output, int, hex, char)
-        if (e.memoryCells[e.memoryPointer] == 0) e.flavor = Flavor.ORANGE
+        if (e.memoryCells[e.memoryPointer] == 0.toShort()) e.flavor = Flavor.ORANGE
 
         when (a) {
             1 -> e.stdout(e.memoryCells[e.memoryPointer].toString())
-            2 -> e.stdout("0x${Integer.toHexString(e.memoryCells[e.memoryPointer])}")
-            3 -> e.stdout(Char(e.memoryCells[e.memoryPointer]).toString())
+            2 -> e.stdout("0x${Integer.toHexString(e.memoryCells[e.memoryPointer].toInt())}")
+            3 -> e.stdout(Char(e.memoryCells[e.memoryPointer].toInt()).toString())
         }
 
         if (e.trace && a != 0) {
@@ -74,7 +74,7 @@ internal enum class TileType(source: Int, val numArgs: Byte, val action: (Enviro
             when (a) {
                 in 0..3 -> e.ipDirection = IPDirection.values()[a]
                 in 4..7 -> e.ipDirection = e.ipDirection.rotateBy(IPDirection.values()[a - 4])
-                8 -> e.ipDirection = IPDirection.values()[e.memoryCells[e.memoryPointer]]
+                8 -> e.ipDirection = IPDirection.values()[e.memoryCells[e.memoryPointer].toInt().rem(4)]
             }
         }
     }

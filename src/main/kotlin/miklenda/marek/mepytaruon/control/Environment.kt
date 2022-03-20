@@ -10,7 +10,7 @@ class Environment(
     internal var ipDirection: IPDirection = IPDirection.RIGHT,
     numberOfCells: Int = 30000,
     internal var trace: Boolean = false,
-    internal val stdin: () -> Int = { readLine()?.toIntOrNull() ?: throw MepytaruonException(ipX, ipY, "Invalid input!") },
+    internal val stdin: () -> Short = { readLine()?.toShortOrNull() ?: throw MepytaruonException(ipX, ipY, "Invalid input!") },
     internal val stdout: (String) -> Unit = { print(it) }
 ) {
     init {
@@ -20,7 +20,7 @@ class Environment(
 
     var returned = false
         internal set
-    internal val memoryCells = IntArray(numberOfCells)
+    internal val memoryCells = ShortArray(numberOfCells)
     internal var memoryPointer: Int = 0
         set(value) {
             if (value !in memoryCells.indices)

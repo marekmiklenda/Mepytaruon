@@ -11,7 +11,8 @@ class Environment(
     numberOfCells: Int = 30000,
     internal var trace: Boolean = false,
     internal val stdin: () -> Short = { readLine()?.toShortOrNull() ?: throw MepytaruonException(ipX, ipY, "Invalid input!") },
-    internal val stdout: (String) -> Unit = { print(it) }
+    internal val stdout: (String) -> Unit = { print(it) },
+    internal val stderr: (String) -> Unit = { System.err.println(it) }
 ) {
     init {
         ipX -= ipDirection.absoluteXChange

@@ -10,7 +10,7 @@ object Interpreter {
         try {
             while (!env.returned) pr.step()
         } catch (e: MepytaruonException) {
-            env.stdout(e.message ?: "An unknown error has occurred.")
+            env.stderr(e.message ?: "An unknown error has occurred.")
             env.returned = true
             return 1
         }

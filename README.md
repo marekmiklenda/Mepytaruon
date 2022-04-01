@@ -1,7 +1,7 @@
 This is the original interpreter for the esolang [Mepytaruon](https://esolangs.org/wiki/Mepytaruon).
 
-This interpreter can be used in other JVM applications with custom stdin/stdout. To see how to start a Mepytaruon
-program, look at ```main.kt``` and ```miklenda.marek.mepytaruon.control.Environment```.
+This interpreter can be used in other JVM applications with custom stdin/stdout/stderr. To see how to start a Mepytaruon
+program from another application, look at ```main.kt``` and ```miklenda.marek.mepytaruon.control.Environment```.
 
 ```
 usage: [-h] [-x X] [-y Y] [--start-up] [-c CELLS] [-t] PROGRAM
